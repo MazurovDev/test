@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+</head>
+<body>
+    <div class="table__info">
+        <table>
+
+            <tr class="head">
+                <td>Имя Фамилия</td>
+                <td>Дата рождения</td>
+                <td>Направление обучения</td>
+            </tr>
+
+            <tr>
+                <td>Иван Петров</td>
+                <td>15.12.1995</td>
+                <td>Dev</td>
+            </tr>
+            <tr>
+                <td>Пётр Симаков</td>
+                <td>20.12.1998</td>
+                <td>Dev</td>
+            </tr>
+            <tr>
+                <td>Лариса Осина</td>
+                <td>02.05.1997</td>
+                <td>Qa</td>
+            </tr>
+            <tr>
+                <td>Петр Иванов</td>
+                <td>11.12.1991</td>
+                <td>PM</td>
+            </tr>
+
+        </table>
+        <div class="inputForm">
+            <input id='inputName' type="text" placeholder="Имя"><br>
+            <input id='inputBD' type="text" placeholder="Дата рождения"><br>
+            <input id='inputLearning' type="text" placeholder="Направление обучения"><br>
+            <button id="addButton">Добавить человека</button>
+        </div>
+    </div>
+
+    <script>
+        let addButton = document.querySelector('#addButton');
+        let inputName = document.querySelector('#inputName');
+        let inputBD = document.querySelector('#inputBD');
+        let table = document.querySelector('table');
+        let inputLearning = document.querySelector('#inputLearning');
+        let arr = [inputName,inputBD,inputLearning]
+        
+        addButton.addEventListener('click', function (){
+            let tr = document.createElement('tr');
+            for(let i = 0; i<3; i++){
+                let td = document.createElement('td');
+                if(inputName.value !== '' && inputBD.value !== '' && inputLearning.value !== ''){
+                td.innerHTML = arr[i].value;
+                tr.appendChild(td);
+                }else{
+                    alert('Введите все данные!')
+                    break;
+                }
+            }
+            table.appendChild(tr);
+        })
+    </script>
+</body>
+<style>
+*{
+    font-size: 15px;
+    }
+.inputForm{
+    padding: 30px 0 0 15px;
+}
+.inputForm>input{
+    margin: 10px 10px 10px 0px;
+}
+.head td{
+    border-bottom: 2px solid rgba(255, 213, 77, 0.753);
+}
+.table__info{
+    display: inline-block;
+}
+
+table{
+    width: 100%;
+    border-collapse: separate;
+    box-sizing: border-box;
+    border-spacing: 15px 0px;
+}
+td,th{
+    padding:7px 10px 7px 5px;
+}
+tr td:first-child{
+     background: rgba(132, 206, 255, 0.459);
+     color: white;
+}
+tr td:not(:first-child){
+    color: silver;
+}
+tr.head td:not(:first-child){
+    color: black;
+}
+
+</style>
+</html>
